@@ -1,0 +1,29 @@
+* =clight-gui= Nix flake
+
+This is a [[https://nixos.wiki/wiki/Flakes][Nix flake]] for [[https://github.com/nullobsi/clight-gui][Clight GUI]]: a GUI and taskbar applet for [[https://github.com/FedeDP/Clight][Clight]].
+
+** Example usage
+
+You can use this flake as any other. For example:
+
+#+begin_src nix
+  {
+    inputs = {
+      clight-gui.url = github:sangster/clight-gui.nix;
+    };
+
+    outputs = { nixpkgs, clight-gui, ... }: {
+      nixosConfigurations.example = nixpkgs.lib.nixosSystem {
+        modules = [
+          ({ pkgs, ... }: {
+            nixpkgs.overlays = [ clight-gui.overlay ];
+            environment.systemPackages = [
+              pkgs.clight
+              pkgs.clight-gui
+            ];
+          })
+        ];
+      };
+    };
+  }
+#+end_src
