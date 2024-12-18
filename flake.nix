@@ -2,11 +2,8 @@
   description = "Qt GUI for clight";
 
   inputs = {
-    flake-utils = {
-      url = github:numtide/flake-utils?rev=74f7e4319258e287b0f9cb95426c9853b282730b;
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
+    flake-utils.url = github:numtide/flake-utils?rev=74f7e4319258e287b0f9cb95426c9853b282730b;
+    nixpkgs.url = github:nixos/nixpkgs?ref=nixos-24.11;
     upstream = {
       url = github:nullobsi/clight-gui?rev=f60189909f5eb4ce2e2bcfea591ffa5e598d6668;
       flake = false;
